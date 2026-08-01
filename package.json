@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server:routing": "tsx watch --tsconfig ./src/app/features/learn/materials/server/server.tsconfig.json ./src/app/features/learn/materials/server/server.ts"
   },
   "private": true,
   "packageManager": "npm@11.16.0",
@@ -20,6 +21,7 @@
     "@lucide/angular": "^1.28.0",
     "@primeicons/angular": "^8.0.0",
     "@primeuix/themes": "^3.0.0",
+    "express": "^5.2.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "primeng": "^22.0.0",
     "rxjs": "~7.8.0",
@@ -31,9 +33,11 @@
     "@angular/cli": "^22.0.8",
     "@angular/compiler-cli": "^22.0.0",
     "@tailwindcss/postcss": "^4.1.12",
+    "@types/express": "^5.0.6",
     "postcss": "^8.5.3",
     "prettier": "^3.8.1",
     "tailwindcss": "^4.1.12",
+    "tsx": "^4.23.1",
     "typescript": "~6.0.2"
   }
 }

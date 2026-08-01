@@ -3,6 +3,6 @@ import { Routes } from '@angular/router';
 export const learnRoutes: Routes = [
   {
     path: 'routing',
-    loadComponent: () => import('./pages/routing-page/routing-page').then((m) => m.RoutingPage),
+    loadChildren: () => import('./routing/routing.routes').then((m) => m.routingRoutes),
   },
 ];
