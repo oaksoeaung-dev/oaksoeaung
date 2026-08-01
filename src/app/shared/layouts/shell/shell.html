@@ -1,0 +1,89 @@
+<div class="h-svh overflow-hidden">
+  <p-sidebar-layout class="relative! h-full">
+    @if (isMobile() && open()) {
+      <p-sidebar-backdrop class="absolute!" />
+    }
+    <p-sidebar id="nested" [collapsible]="isMobile() ? 'offcanvas' : 'icon'" [overlay]="isMobile()" [(open)]="open">
+      <p-sidebar-spacer />
+      <p-sidebar-aside>
+        <p-sidebar-panel>
+          <p-sidebar-header>
+            <p-sidebar-menu>
+              <p-sidebar-menu-item>
+                <button pSidebarMenuButton class="p-1!">
+                  <div
+                    class="flex size-6 shrink-0 items-center justify-center rounded-md bg-linear-to-br from-sky-500 to-blue-600 text-xs leading-none font-bold text-white"
+                  >
+                    O
+                  </div>
+                  <span class="text-sm font-semibold">OAK SOE AUNG</span>
+                </button>
+              </p-sidebar-menu-item>
+            </p-sidebar-menu>
+          </p-sidebar-header>
+          <p-sidebar-content>
+            @for (group of menus; track group.label) {
+              <p-sidebar-group>
+                <p-sidebar-group-label>{{ group.label }}</p-sidebar-group-label>
+                <p-sidebar-group-content>
+                  <p-sidebar-menu>
+                    @for (item of group.items; track item.label) {
+                      <ng-container [ngTemplateOutlet]="node" [ngTemplateOutletContext]="{ $implicit: item }" />
+                    }
+                  </p-sidebar-menu>
+                </p-sidebar-group-content>
+              </p-sidebar-group>
+            }
+          </p-sidebar-content>
+          <p-sidebar-footer>
+            <p-sidebar-menu>
+              <p-sidebar-menu-item>
+                <button pSidebarMenuButton class="p-1!">
+                  <p-avatar label="OA" shape="circle" class="size-6 shrink-0 text-xs" />
+                  <span>Oak Soe Aung</span>
+                </button>
+              </p-sidebar-menu-item>
+            </p-sidebar-menu>
+          </p-sidebar-footer>
+          <button pSidebarRail></button>
+        </p-sidebar-panel>
+      </p-sidebar-aside>
+    </p-sidebar>
+    <p-sidebar-main>
+      <header class="border-surface-200 dark:border-surface-700 flex h-12 items-center gap-2 border-b px-4">
+        <button pButton pSidebarTrigger target="nested" severity="secondary" text size="small">
+          <svg lucideSidebar size="16" />
+        </button>
+        <span class="text-sm font-medium">Something</span>
+      </header>
+      <div class="min-h-0 flex-1 overflow-y-auto">
+        <div class="p-3">
+          <ng-content />
+        </div>
+      </div>
+    </p-sidebar-main>
+  </p-sidebar-layout>
+</div>
+<ng-template #node let-item>
+  @if (item.children?.length) {
+    <p-sidebar-menu-item collapsible [defaultOpen]="hasActiveChild(item)">
+      <button pSidebarMenuButton>
+        <svg [lucideIcon]="item.icon"></svg>
+        <span>{{ item.label }}</span>
+        <svg lucideChevronDown class="ml-auto transition-transform duration-200"></svg>
+      </button>
+      <p-sidebar-menu-sub>
+        @for (child of item.children; track child.label) {
+          <ng-container [ngTemplateOutlet]="node" [ngTemplateOutletContext]="{ $implicit: child }" />
+        }
+      </p-sidebar-menu-sub>
+    </p-sidebar-menu-item>
+  } @else {
+    <p-sidebar-menu-sub-item>
+      <button pSidebarMenuSubButton [isActive]="item.isActive">
+        <svg [lucideIcon]="item.icon"></svg>
+        <span>{{ item.label }}</span>
+      </button>
+    </p-sidebar-menu-sub-item>
+  }
+</ng-template>
