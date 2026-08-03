@@ -67,11 +67,11 @@
 <ng-template #node let-item>
   @if (item.children?.length) {
     <p-sidebar-menu-item collapsible [defaultOpen]="hasActiveChild(item)">
-      <button pSidebarMenuButton>
+      <a pSidebarMenuButton [routerLink]="item.routerLink">
         <svg [lucideIcon]="item.icon"></svg>
         <span>{{ item.label }}</span>
         <svg lucideChevronDown class="ml-auto transition-transform duration-200"></svg>
-      </button>
+      </a>
       <p-sidebar-menu-sub>
         @for (child of item.children; track child.label) {
           <ng-container [ngTemplateOutlet]="node" [ngTemplateOutletContext]="{ $implicit: child }" />
@@ -80,10 +80,10 @@
     </p-sidebar-menu-item>
   } @else {
     <p-sidebar-menu-sub-item>
-      <button pSidebarMenuSubButton [isActive]="item.isActive">
+      <a pSidebarMenuSubButton [routerLink]="item.routerLink" [isActive]="item.isActive">
         <svg [lucideIcon]="item.icon"></svg>
         <span>{{ item.label }}</span>
-      </button>
+      </a>
     </p-sidebar-menu-sub-item>
   }
 </ng-template>

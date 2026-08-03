@@ -1,0 +1,28 @@
+<p-card class="h-full w-full overflow-hidden [&_.p-card-body]:flex-1 [&_.p-card-content]:flex-1">
+  <ng-template #header>
+    <img class="aspect-video w-full object-cover" [alt]="course().description" [src]="course().iconUrl" />
+  </ng-template>
+  <ng-template #title>
+    <span class="text-lg font-bold">{{ course().description }}</span>
+  </ng-template>
+  <ng-template #subtitle>
+    <div class="flex items-center gap-2">
+      <p-tag severity="danger" [value]="course().category" />
+    </div>
+  </ng-template>
+  <div class="space-y-4">
+    <p class="text-sm">{{ course().longDescription }}</p>
+  </div>
+  <ng-template #footer>
+    <div class="mt-4 flex items-center gap-2">
+      <button type="button" pButton class="flex-1">
+        <svg lucideView size="16"></svg>
+        View Course
+      </button>
+      <button type="button" pButton severity="secondary" [outlined]="true" class="flex-1">
+        <svg lucidePencilSparkles size="16"></svg>
+        Edit
+      </button>
+    </div>
+  </ng-template>
+</p-card>

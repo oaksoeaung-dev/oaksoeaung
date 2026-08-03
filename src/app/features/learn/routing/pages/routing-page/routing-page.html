@@ -1,1 +1,19 @@
-<p>routing-page works!</p>
+<div class="flex justify-center">
+  <p-menubar [model]="items" class="w-full">
+    <ng-template #item let-item>
+      <a
+        pRipple
+        class="p-menubar-item-link rounded-(--p-menubar-border-radius)"
+        [routerLink]="item.routerLink"
+        routerLinkActive="bg-(--p-menubar-item-active-background) text-(--p-menubar-item-active-color)"
+      >
+        <svg [lucideIcon]="item.lucideIcon" class="p-menubar-item-icon" routerLinkActive="stroke-(--p-menubar-item-icon-active-color)" />
+        <span class="p-menubar-item-label">{{ item.label }}</span>
+      </a>
+    </ng-template>
+  </p-menubar>
+</div>
+
+<div class="mt-3">
+  <router-outlet />
+</div>

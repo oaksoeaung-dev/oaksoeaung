@@ -1,0 +1,5 @@
+<div class="grid gap-4 xl:grid-cols-3 2xl:grid-cols-4">
+  @for (course of courses(); track course.id) {
+    <app-course-card [course]="course" />
+  }
+</div>

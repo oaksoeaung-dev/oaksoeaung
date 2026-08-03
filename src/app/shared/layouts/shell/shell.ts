@@ -6,10 +6,11 @@ import { NgTemplateOutlet } from '@angular/common';
 import { LucideChevronDown, LucideDynamicIcon, LucidePanelLeft } from '@lucide/angular';
 import { Menu, MenuGroup } from '@core/models/menu-group.model';
 import { MENU_GROUPS } from '@core/data/menu-groups';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shell',
-  imports: [AvatarModule, SidebarModule, ButtonModule, Sidebar, NgTemplateOutlet, LucidePanelLeft, LucideChevronDown, LucideDynamicIcon],
+  imports: [AvatarModule, SidebarModule, ButtonModule, Sidebar, NgTemplateOutlet, LucidePanelLeft, LucideChevronDown, LucideDynamicIcon, RouterLink],
   templateUrl: './shell.html',
 })
 export class Shell implements OnInit, OnDestroy {

@@ -5,6 +5,7 @@ export interface Menu {
   icon?: LucideIcon;
   isActive?: boolean;
   children?: Menu[];
+  routerLink?: string;
 }
 
 export interface MenuGroup {

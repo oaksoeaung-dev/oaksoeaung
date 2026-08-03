@@ -8,6 +8,7 @@ export const MENU_GROUPS: MenuGroup[] = [
       {
         label: 'Routing',
         icon: LucideRoute,
+        routerLink: 'learn/routing',
       },
     ],
   },
