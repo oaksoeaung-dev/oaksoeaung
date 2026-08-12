@@ -1,0 +1,40 @@
+[
+  {
+    "key": "firstName",
+    "type": "f-input",
+    "className": "mb-5 block",
+    "id": "formly_3_f-input_firstName_0",
+    "props": {
+      "label": "First Name"
+    }
+  },
+  {
+    "key": "lastName",
+    "type": "f-input",
+    "className": "mb-5 block",
+    "id": "formly_3_f-input_lastName_1",
+    "props": {
+      "label": "Last Name"
+    }
+  },
+  {
+    "key": "password",
+    "type": "f-input",
+    "className": "mb-5 block",
+    "id": "3",
+    "props": {
+      "label": "Password",
+      "type": "password"
+    }
+  },
+  {
+    "key": "confirmPassword",
+    "type": "f-input",
+    "className": "mb-5 block",
+    "id": "4",
+    "props": {
+      "label": "Confirm Password",
+      "type": "password"
+    }
+  }
+]

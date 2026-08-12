@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/error/error.routes').then((m) => m.errorRoutes),
   },
   {
+    path: 'tests',
+    loadChildren: () => import('./features/tests/tests.routes').then((m) => m.testsRoutes),
+  },
+  {
     path: '**',
     redirectTo: 'error/404',
   },

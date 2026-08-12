@@ -1,0 +1,4 @@
+<p-fluid>
+  <label pLabel [for]="field.id">{{ props.label }}</label>
+  <input [type]="props.type" pInputText [id]="field.id ?? ''" [formControl]="formControl" [formlyAttributes]="field" />
+</p-fluid>
