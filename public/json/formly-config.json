@@ -1,63 +1,70 @@
 [
   {
-    "key": "firstName",
-    "type": "f-input",
-    "className": "mb-5 block",
-    "id": "formly_3_f-input_firstName_0",
-    "props": {
-      "label": "First Name",
-      "required": true
+    "validators": {
+      "validation": [{ "name": "fieldMatch", "options": { "errorPath": "passwordConfirm" } }]
     },
-    "validation": {
-      "messages": {
-        "required": "First name is required"
-      }
-    }
-  },
-  {
-    "key": "lastName",
-    "type": "f-input",
-    "className": "mb-5 block",
-    "id": "formly_3_f-input_lastName_1",
-    "props": {
-      "label": "Last Name"
-    }
-  },
-  {
-    "key": "fullName",
-    "type": "f-input",
-    "className": "mb-5 block",
-    "id": "formly_3_f-input_fullName_2",
-    "props": {
-      "label": "Full Name",
-      "rules": [
-        {
-          "target": "model.fullName",
-          "expression": "concat",
-          "arguments": ["firstName", "lastName"],
-          "separator": "-"
+    "fieldGroup": [
+      {
+        "key": "firstName",
+        "type": "f-input",
+        "className": "mb-5 block",
+        "id": "formly_3_f-input_firstName_0",
+        "props": {
+          "label": "First Name",
+          "required": true
+        },
+        "validation": {
+          "messages": {
+            "required": "First name is required"
+          }
         }
-      ]
-    }
-  },
-  {
-    "key": "password",
-    "type": "f-input",
-    "className": "mb-5 block",
-    "id": "3",
-    "props": {
-      "label": "Password",
-      "type": "password"
-    }
-  },
-  {
-    "key": "confirmPassword",
-    "type": "f-input",
-    "className": "mb-5 block",
-    "id": "4",
-    "props": {
-      "label": "Confirm Password",
-      "type": "password"
-    }
+      },
+      {
+        "key": "lastName",
+        "type": "f-input",
+        "className": "mb-5 block",
+        "id": "formly_3_f-input_lastName_1",
+        "props": {
+          "label": "Last Name"
+        }
+      },
+      {
+        "key": "fullName",
+        "type": "f-input",
+        "className": "mb-5 block",
+        "id": "formly_3_f-input_fullName_2",
+        "props": {
+          "label": "Full Name",
+          "rules": [
+            {
+              "target": "model.fullName",
+              "expression": "concat",
+              "arguments": ["firstName", "lastName"],
+              "separator": "-"
+            }
+          ]
+        }
+      },
+      {
+        "key": "password",
+        "type": "f-input",
+        "className": "mb-5 block",
+        "id": "3",
+        "props": {
+          "label": "Password",
+          "type": "password"
+        }
+      },
+      {
+        "key": "passwordConfirm",
+        "type": "f-input",
+        "className": "mb-5 block",
+        "id": "4",
+        "props": {
+          "label": "Password Confirm",
+          "type": "password"
+        }
+      }
+    ]
   }
 ]

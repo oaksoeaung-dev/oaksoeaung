@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { FormConfigApi } from '../../services/form-config-api';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { ExpressionMap } from '../../models/expression-map';
@@ -18,30 +18,41 @@ export class RenderFormPage {
 
   form = new FormGroup({});
 
-  fields = computed(() => {
+  fields = computed<FormlyFieldConfig[]>(() => {
     const configs = this.formConfigResource.value() ?? [];
-    return configs.map((config: FormlyFieldConfig) => {
-      if (config.props?.['rules']) {
-        const rules = config.props?.['rules'] as ExpressionRule[];
-        const expressions: Record<string, ExpressionFn> = {};
-        rules.forEach((rule) => {
-          const factory = ExpressionMap[rule.expression];
-          if (!factory) {
-            console.warn(`Unknown formly expression "${rule.expression}"`);
-            return;
+    return configs.map((config) => ({
+      ...config,
+      fieldGroup: configs
+        .flatMap((group) => group.fieldGroup ?? [])
+        .map((config: FormlyFieldConfig) => {
+          if (config.props?.['rules']) {
+            const rules = config.props?.['rules'] as ExpressionRule[];
+            const expressions: Record<string, ExpressionFn> = {};
+            rules.forEach((rule) => {
+              const factory = ExpressionMap[rule.expression];
+              if (!factory) {
+                console.warn(`Unknown formly expression "${rule.expression}"`);
+                return;
+              }
+              expressions[rule.target] = factory(rule);
+            });
+            return {
+              ...config,
+              expressions,
+            };
           }
-          expressions[rule.target] = factory(rule);
-        });
-        return {
-          ...config,
-          expressions,
-        };
-      }
-      return config;
-    });
+          return config;
+        }),
+    }));
   });
 
   save() {
     console.log(this.form.value);
+  }
+
+  constructor() {
+    effect(() => {
+      console.log(this.fields());
+    });
   }
 }
