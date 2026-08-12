@@ -5,7 +5,13 @@
     "className": "mb-5 block",
     "id": "formly_3_f-input_firstName_0",
     "props": {
-      "label": "First Name"
+      "label": "First Name",
+      "required": true
+    },
+    "validation": {
+      "messages": {
+        "required": "First name is required"
+      }
     }
   },
   {
@@ -15,6 +21,23 @@
     "id": "formly_3_f-input_lastName_1",
     "props": {
       "label": "Last Name"
+    }
+  },
+  {
+    "key": "fullName",
+    "type": "f-input",
+    "className": "mb-5 block",
+    "id": "formly_3_f-input_fullName_2",
+    "props": {
+      "label": "Full Name",
+      "rules": [
+        {
+          "target": "model.fullName",
+          "expression": "concat",
+          "arguments": ["firstName", "lastName"],
+          "separator": "-"
+        }
+      ]
     }
   },
   {
@@ -34,7 +57,14 @@
     "id": "4",
     "props": {
       "label": "Confirm Password",
-      "type": "password"
+      "type": "password",
+      "rules": [
+        {
+          "expression": "fieldMatch",
+          "arguments": ["password", "confirmPassword"],
+          "message": "Passwords do not match"
+        }
+      ]
     }
   }
 ]
