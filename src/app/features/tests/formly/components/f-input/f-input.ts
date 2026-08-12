@@ -11,8 +11,4 @@ import { MessageModule } from 'primeng/message';
   imports: [InputTextModule, LabelModule, FluidModule, ReactiveFormsModule, FormlyModule, MessageModule],
   templateUrl: './f-input.html',
 })
-export class FInput extends FieldType<FieldTypeConfig> {
-  ngOnInit() {
-    console.log(this.field);
-  }
-}
+export class FInput extends FieldType<FieldTypeConfig> {}

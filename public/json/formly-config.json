@@ -57,14 +57,7 @@
     "id": "4",
     "props": {
       "label": "Confirm Password",
-      "type": "password",
-      "rules": [
-        {
-          "expression": "fieldMatch",
-          "arguments": ["password", "confirmPassword"],
-          "message": "Passwords do not match"
-        }
-      ]
+      "type": "password"
     }
   }
 ]

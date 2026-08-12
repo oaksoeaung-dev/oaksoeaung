@@ -3,16 +3,20 @@ import { FormConfigApi } from '../../services/form-config-api';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { ExpressionMap } from '../../models/expression-map';
 import { ExpressionFn, ExpressionRule } from '../../models/expression-rule';
+import { ButtonModule } from 'primeng/button';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-render-form-page',
-  imports: [FormlyModule],
+  imports: [FormlyModule, ButtonModule],
   templateUrl: './render-form-page.html',
 })
 export class RenderFormPage {
   private readonly formConfigApi = inject(FormConfigApi);
 
   private readonly formConfigResource = this.formConfigApi.getFormConfigResource();
+
+  form = new FormGroup({});
 
   fields = computed(() => {
     const configs = this.formConfigResource.value() ?? [];
@@ -36,4 +40,8 @@ export class RenderFormPage {
       return config;
     });
   });
+
+  save() {
+    console.log(this.form.value);
+  }
 }
