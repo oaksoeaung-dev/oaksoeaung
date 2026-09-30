@@ -1,5 +1,32 @@
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
+## Project Overview
+
+- Angular 22 app with SSR and hydration (`@angular/ssr`, Express server in `src/server.ts`)
+- UI components: PrimeNG 22 (keep `primeng` >= 22.1.0; 22.0.x breaks signal forms `[formField]`)
+- Styling: Tailwind CSS v4 with `tailwindcss-primeui`; PrimeNG styles live in the `primeng` CSS layer (order: `theme, base, primeng`)
+- Layout:
+  - `src/app/core/configs/` — application config (`app.config.ts`)
+  - `src/app/core/providers/` — provider factories (e.g. `providePrimeNG()` in `prime-ng-provider.ts`)
+  - `src/app/themes/presets/` — PrimeNG theme presets (`noirPreset`)
+- Register new app-wide providers through a factory in `core/providers/`, then add it to `app.config.ts`
+- Theme changes go through the preset's design tokens, not ad-hoc CSS overrides of PrimeNG classes
+
+## Agent Tooling
+
+- MCP servers:
+  - `angular-cli` (`.mcp.json`) — use `list_projects`, `get_best_practices`, `search_documentation`, and `run_target` instead of shelling out to `ng` where possible
+  - `primeng` (from the `primeng@primeui` Claude Code plugin) — use for PrimeNG component APIs, examples, and theming tokens instead of guessing
+- Skills:
+  - `angular-developer` — Angular code generation and best practices
+  - `primeng:*` (plugin) — start with `primeng:primeng-router` for PrimeNG work
+- Project skills are locked in `skills-lock.json` and stored in `.agents/skills/`. After cloning, run `npx skills experimental_install` to recreate the `.claude/skills/` links
+
+## Code Style
+
+- Do NOT add comments to code. This covers TypeScript, HTML templates, and CSS, including JSDoc, inline comments, and `TODO`s
+- Do NOT add comments to files you edit either; leave existing comments as they are unless asked to change them
+
 ## TypeScript Best Practices
 
 - Use strict type checking
@@ -20,7 +47,8 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 ## Accessibility Requirements
 
 - It MUST pass all AXE checks.
-- It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
+- It MUST follow all WCAG AA minimums, including focus management and color contrast.
+- Do NOT add `aria-label` attributes, `[attr.aria-label]` bindings, or PrimeNG `ariaLabel` inputs. Give controls an accessible name through visible text instead.
 
 ### Components
 
