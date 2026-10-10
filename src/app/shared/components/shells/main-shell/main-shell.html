@@ -1,0 +1,78 @@
+<div class="h-svh overflow-hidden">
+  <p-sidebar-layout class="relative! h-full">
+    <p-sidebar [variant]="'floating'" id="variants-demo">
+      <p-sidebar-spacer />
+      <p-sidebar-aside>
+        <p-sidebar-panel>
+          <p-sidebar-header>
+            <p-sidebar-menu>
+              <p-sidebar-menu-item>
+                <button class="px-1!" pSidebarMenuButton>
+                  <div
+                    class="flex size-6 shrink-0 items-center justify-center rounded-md bg-linear-to-br from-slate-500 to-slate-600 text-white text-xs font-bold leading-none"
+                  >
+                    O
+                  </div>
+                  <span class="font-semibold text-sm">Oak Soe Aung</span>
+                </button>
+              </p-sidebar-menu-item>
+            </p-sidebar-menu>
+          </p-sidebar-header>
+          <p-sidebar-content>
+            @for (group of menuStore.navGroups(); track group.label) {
+              <p-sidebar-group>
+                <p-sidebar-group-label>{{ group.label }}</p-sidebar-group-label>
+                <p-sidebar-group-content>
+                  <p-sidebar-menu>
+                    @for (item of group.items; track item.label) {
+                      <ng-container [ngTemplateOutletContext]="{ $implicit: item, level: 0 }" [ngTemplateOutlet]="node" />
+                    }
+                  </p-sidebar-menu>
+                </p-sidebar-group-content>
+              </p-sidebar-group>
+            }
+          </p-sidebar-content>
+          <button pSidebarRail></button>
+        </p-sidebar-panel>
+      </p-sidebar-aside>
+    </p-sidebar>
+    <p-sidebar-main>
+      <header class="flex h-12 items-center gap-2 border-b border-surface-200 dark:border-surface-700 px-4">
+        <button pButton pSidebarTrigger severity="secondary" size="small" target="variants-demo" text>
+          <hugeicons-icon [icon]="SidebarLeftIcon" [size]="16" />
+        </button>
+      </header>
+      <div class="flex-1 p-4 flex flex-col gap-4">
+        <ng-content />
+      </div>
+    </p-sidebar-main>
+  </p-sidebar-layout>
+</div>
+
+<ng-template #node let-item let-level="level">
+  @if (level === 0 || item.subItems?.length) {
+    <p-sidebar-menu-item [collapsible]="!!item.subItems?.length" [defaultOpen]="hasActiveSub(item)">
+      <a [isActive]="!!item.isActive" [routerLink]="item.url" pSidebarMenuButton>
+        <hugeicons-icon [icon]="item.icon" />
+        <span>{{ item.label }}</span>
+        @if (item.subItems?.length) {
+          <hugeicons-icon [icon]="ChevronDownIcon" class="ml-auto" />
+        }
+      </a>
+      @if (item.subItems?.length) {
+        <p-sidebar-menu-sub>
+          @for (child of item.subItems; track child.label) {
+            <ng-container [ngTemplateOutletContext]="{ $implicit: child, level: level + 1 }" [ngTemplateOutlet]="node" />
+          }
+        </p-sidebar-menu-sub>
+      }
+    </p-sidebar-menu-item>
+  } @else {
+    <p-sidebar-menu-sub-item>
+      <a [isActive]="!!item.isActive" [routerLink]="item.url" pSidebarMenuSubButton>
+        <hugeicons-icon [icon]="item.icon" />
+        <span>{{ item.label }}</span>
+      </a>
+    </p-sidebar-menu-sub-item>
+  }
+</ng-template>
