@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
 
+@plugin '@tailwindcss/typography';
+
+@layer utilities {
+  .tiptap .tableWrapper {
+    @apply my-4 overflow-x-auto;
+  }
+}
+
 ::selection {
   background: var(--p-highlight-background);
   color: var(--p-highlight-color);

@@ -11,6 +11,7 @@ export function providePrimeNG(): EnvironmentProviders {
           name: 'primeng',
           order: 'theme, base, primeng',
         },
+        darkModeSelector: false,
       },
     },
     license:

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Editor } from '../../components/editor/editor/editor';
 
 @Component({
-  imports: [],
+  imports: [Editor],
   selector: 'app-tiptap-page',
   templateUrl: './tiptap-page.html',
 })
