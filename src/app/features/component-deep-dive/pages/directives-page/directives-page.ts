@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Highlight } from '../../directives/highlight';
 
 @Component({
-  imports: [],
+  imports: [Highlight],
   selector: 'app-directives-page',
   templateUrl: './directives-page.html',
 })
