@@ -1,9 +1,8 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { providePrimeNG } from '../providers/prime-ng-provider';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes), provideClientHydration(), providePrimeNG()],
+  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes), providePrimeNG()],
 };

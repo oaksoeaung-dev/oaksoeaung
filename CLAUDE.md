@@ -2,7 +2,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 
 ## Project Overview
 
-- Angular 22 app with SSR and hydration (`@angular/ssr`, Express server in `src/server.ts`)
+- Angular 22 client-side rendered app (no SSR)
 - UI components: PrimeNG 22 (keep `primeng` >= 22.1.0; 22.0.x breaks signal forms `[formField]`)
 - Styling: Tailwind CSS v4 with `tailwindcss-primeui`; PrimeNG styles live in the `primeng` CSS layer (order: `theme, base, primeng`)
 - Layout:
