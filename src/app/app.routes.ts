@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'custom-components',
     loadChildren: () => import('./features/custom-components/custom-components.routes').then((m) => m.customComponentsRoutes),
   },
+  {
+    path: 'design-patterns',
+    loadChildren: () => import('./features/design-patterns/design-patterns.routes').then((m) => m.designPatternsRoutes),
+  },
 ];
