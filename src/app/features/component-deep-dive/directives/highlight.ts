@@ -1,10 +1,11 @@
-import { Directive } from '@angular/core';
+import { Directive, signal } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
+  host: {
+    '[class]': `bg()`,
+  },
 })
 export class Highlight {
-  constructor() {
-    console.log('Highlight');
-  }
+  readonly bg = signal('bg-blue-100');
 }
