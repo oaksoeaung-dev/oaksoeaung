@@ -1,31 +1,12 @@
 <section class="flex max-w-2xl flex-col gap-6 px-4 py-8">
-  <header class="flex flex-col gap-2">
-    <h1 class="text-2xl font-semibold text-slate-900">Command Pattern</h1>
-    <p class="text-slate-700">
-      Each button press is wrapped in a command object. The remote does not know how a light works; it only calls
-      <code>execute()</code>.
-    </p>
-  </header>
-
-  <ul class="grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
-    <li><strong class="text-slate-900">Command</strong> — interface with <code>execute()</code></li>
-    <li><strong class="text-slate-900">Concrete commands</strong> — <code>TurnOnLightCommand</code>, <code>TurnOffLightCommand</code></li>
-    <li><strong class="text-slate-900">Receiver</strong> — <code>Light</code>, does the real work</li>
-    <li><strong class="text-slate-900">Invoker</strong> — <code>RemoteControl</code>, runs commands and keeps history</li>
-    <li><strong class="text-slate-900">Factory</strong> — <code>LightCommandFactory</code>, injects services and builds commands</li>
-  </ul>
-
   <div class="flex items-center gap-4 rounded-lg border border-slate-300 p-4">
-    <span
-      class="size-10 rounded-full border border-slate-400"
-      [class]="light.isOn() ? 'bg-yellow-300' : 'bg-slate-200'"
-    ></span>
-    <p role="status" class="font-medium text-slate-900">The light is {{ light.isOn() ? 'on' : 'off' }}</p>
+    <span [class]="light.isOn() ? 'bg-yellow-300' : 'bg-slate-200'" class="size-10 rounded-full border border-slate-400"></span>
+    <p class="font-medium text-slate-900" role="status">The light is {{ light.isOn() ? 'on' : 'off' }}</p>
   </div>
 
   <div class="flex flex-wrap gap-2">
-    <p-button label="Turn on" (onClick)="turnOn()" />
-    <p-button label="Turn off" severity="secondary" (onClick)="turnOff()" />
+    <button (click)="turnOn()" pButton type="button">Turn on</button>
+    <button (click)="turnOff()" pButton severity="secondary" type="button">Turn off</button>
   </div>
 
   <div class="flex flex-col gap-2">

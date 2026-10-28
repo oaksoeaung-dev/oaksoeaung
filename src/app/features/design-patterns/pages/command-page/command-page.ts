@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { LightCommandFactory } from '../../commands/light-command-factory';
 import { RemoteControl } from '../../invokers/remote-control';
 import { Light } from '../../receivers/light';
 
 @Component({
-  imports: [Button],
+  imports: [ButtonDirective],
   selector: 'app-command-page',
   templateUrl: './command-page.html',
 })
