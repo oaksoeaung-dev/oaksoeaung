@@ -1,6 +1,6 @@
 import { Service, signal } from '@angular/core';
 import { NavGroup } from '../../shared/models/navbar.model';
-import { ConstellationIcon, Directions02Icon, Note02Icon } from '@hugeicons/core-free-icons';
+import { Directions02Icon, Note02Icon } from '@hugeicons/core-free-icons';
 
 @Service()
 export class MenuStore {
@@ -22,16 +22,6 @@ export class MenuStore {
           label: 'Tiptap',
           icon: Note02Icon,
           url: 'custom-components/tiptap',
-        },
-      ],
-    },
-    {
-      label: 'Design Patterns',
-      items: [
-        {
-          label: 'Command',
-          icon: ConstellationIcon,
-          url: 'design-patterns/command',
         },
       ],
     },
