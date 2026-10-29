@@ -8,6 +8,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Layout:
   - `src/app/core/configs/` — application config (`app.config.ts`)
   - `src/app/core/providers/` — provider factories (e.g. `providePrimeNG()` in `prime-ng-provider.ts`)
+  - `src/app/themes/styles.css` — global stylesheet (Tailwind imports, global styles)
   - `src/app/themes/presets/` — PrimeNG theme presets (`noirPreset`)
 - Register new app-wide providers through a factory in `core/providers/`, then add it to `app.config.ts`
 - Theme changes go through the preset's design tokens, not ad-hoc CSS overrides of PrimeNG classes

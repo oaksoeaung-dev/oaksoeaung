@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import './components/tiptap.css';
+@import './base/selection.css';
+@import './base/scrollbar.css';
+
+@plugin '@tailwindcss/typography';

@@ -1,0 +1,5 @@
+@layer utilities {
+  .tiptap .tableWrapper {
+    @apply my-4 overflow-x-auto;
+  }
+}
