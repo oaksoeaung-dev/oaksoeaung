@@ -5,7 +5,7 @@ export interface NavItem {
   label: string;
   isActive?: boolean;
   subItems?: NavItem[];
-  url: string;
+  url?: string;
 }
 
 export interface NavGroup {

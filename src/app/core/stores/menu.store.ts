@@ -1,6 +1,6 @@
 import { Service, signal } from '@angular/core';
 import { NavGroup } from '../../shared/models/navbar.model';
-import { Directions02Icon, Note02Icon } from '@hugeicons/core-free-icons';
+import { Directions02Icon, GroupLayersIcon, Mouse14Icon, Note02Icon } from '@hugeicons/core-free-icons';
 
 @Service()
 export class MenuStore {
@@ -12,6 +12,17 @@ export class MenuStore {
           label: 'Directives',
           icon: Directions02Icon,
           url: 'component-deep-dive/directives',
+        },
+        {
+          label: 'Practices',
+          icon: GroupLayersIcon,
+          subItems: [
+            {
+              label: 'Mouse Tracker',
+              icon: Mouse14Icon,
+              url: 'component-deep-dive/practices/mouse-tracker',
+            },
+          ],
         },
       ],
     },

@@ -1,0 +1,15 @@
+<div
+  #tracker="track-mouse"
+  class="relative size-50 overflow-hidden rounded-2xl bg-surface-100"
+  track-mouse
+>
+  <div
+    [style.left.px]="tracker.x()"
+    [style.top.px]="tracker.y()"
+    class="pointer-events-none absolute size-6 -translate-1/2 rounded-full bg-primary-400"
+  ></div>
+</div>
+<div
+  class="relative size-50 overflow-hidden rounded-2xl bg-surface-100 bg-radial-[circle_at_var(--mouse-x)_var(--mouse-y)] from-primary-300 via-surface-200/70 via-30% to-transparent to-70%"
+  track-mouse
+></div>
