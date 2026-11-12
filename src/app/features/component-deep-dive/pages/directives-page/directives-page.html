@@ -5,10 +5,15 @@
 
   <h1>The Great Pancake Disaster and Other Lessons From Ordinary Saturdays</h1>
 
-  <p appHighlight class="lead">
+  <p #highlight="highlight" class="lead" highlight>
     Nobody plans to set off the smoke alarm at seven in the morning. Yet some of the best memories come from the moments that go hilariously,
     gloriously wrong.
+    @if (highlight.isActive()) {
+      !!!
+    }
   </p>
+
+  <app-blank highlight />
 
   <p>
     Last Saturday I decided to make pancakes for the whole family. I had a recipe, a brand-new pan, and <strong>far too much confidence</strong>. What
@@ -19,9 +24,9 @@
   <h2>What went wrong, in order</h2>
 
   <ol>
-    <li appHighlight>I cranked the heat to maximum because hungry people were watching.</li>
+    <li (deactivated)="onDeactivation($event)" highlight="bg-green-100">I cranked the heat to maximum because hungry people were watching.</li>
     <li>The first pancake turned into a charcoal frisbee.</li>
-    <li appHighlight>The dog accepted the frisbee with great enthusiasm.</li>
+    <li highlight>The dog accepted the frisbee with great enthusiasm.</li>
     <li>The smoke alarm announced breakfast to the entire street.</li>
   </ol>
 
